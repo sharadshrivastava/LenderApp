@@ -1,0 +1,115 @@
+{
+  "accounts": [
+    {
+      "name": "CommBank",
+      "months": [
+        {
+          "name": "Jan",
+          "total": 1267,
+          "household": 644,
+          "groceries": 352,
+          "transport": 150,
+          "food": 121
+        },
+        {
+          "name": "Feb",
+          "total": 1723,
+          "household": 800,
+          "groceries": 452,
+          "transport": 250,
+          "food": 221
+        },
+        {
+          "name": "March",
+          "total": 1146,
+          "household": 544,
+          "groceries": 252,
+          "transport": 150,
+          "food": 200
+        },
+        {
+          "name": "April",
+          "total": 1690,
+          "household": 700,
+          "groceries": 440,
+          "transport": 250,
+          "food": 300
+        }
+      ]
+    },
+    {
+      "name": "ANZ",
+      "months": [
+        {
+          "name": "Jan",
+          "total": 1307,
+          "household": 654,
+          "groceries": 362,
+          "transport": 160,
+          "food": 131
+        },
+        {
+          "name": "Feb",
+          "total": 1763,
+          "household": 810,
+          "groceries": 462,
+          "transport": 260,
+          "food": 231
+        },
+        {
+          "name": "March",
+          "total": 1186,
+          "household": 554,
+          "groceries": 262,
+          "transport": 160,
+          "food": 210
+        },
+        {
+          "name": "April",
+          "total": 1730,
+          "household": 710,
+          "groceries": 450,
+          "transport": 260,
+          "food": 310
+        }
+      ]
+    },
+    {
+      "name": "Westpac",
+      "months": [
+        {
+          "name": "Jan",
+          "total": 1387,
+          "household": 674,
+          "groceries": 382,
+          "transport": 180,
+          "food": 151
+        },
+        {
+          "name": "Feb",
+          "total": 1833,
+          "household": 830,
+          "groceries": 482,
+          "transport": 280,
+          "food": 241
+        },
+        {
+          "name": "March",
+          "total": 1226,
+          "household": 564,
+          "groceries": 272,
+          "transport": 170,
+          "food": 220
+        },
+        {
+          "name": "April",
+          "total": 1780,
+          "household": 720,
+          "groceries": 460,
+          "transport": 270,
+          "food": 330
+        }
+      ]
+    }
+  ]
+}
