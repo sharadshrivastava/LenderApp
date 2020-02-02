@@ -1,30 +1,31 @@
 package com.test.lenderapp.ui
 
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.test.lenderapp.R
+import com.test.lenderapp.ui.budget.BudgetFragment
 import com.test.lenderapp.ui.home.HomeFragment
+import com.test.lenderapp.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.name
     private val allPermission = 1
+    lateinit var navigationView:BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkPermissions()
         setContentView(R.layout.main_activity)
         setSupportActionBar(toolbar)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, HomeFragment.newInstance()).commitNow()
-        }
+        setupNavigationView()
     }
 
     private fun checkPermissions() {
@@ -39,7 +40,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (!listPermissionsNeeded.isEmpty()) {
-            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toTypedArray(), allPermission)
+            ActivityCompat.requestPermissions(
+                this,
+                listPermissionsNeeded.toTypedArray(),
+                allPermission
+            )
         }
     }
 
@@ -51,5 +56,29 @@ class MainActivity : AppCompatActivity() {
             Log.v(TAG, e.stackTrace.toString());
         }
         return null;
+    }
+
+    private fun setupNavigationView(){
+        navigationView = findViewById(R.id.bottom_navigation)
+        navigationView.setOnNavigationItemSelectedListener{
+            handleNavigationItems(it.itemId)
+        }
+        navigationView.setOnNavigationItemReselectedListener {
+            //This override is required to avoid recreation of fragment on double click.
+        }
+        navigationView.selectedItemId = R.id.accounts
+    }
+
+    private fun handleNavigationItems(id:Int):Boolean{
+        var fragment: Fragment? = null
+        when(id){
+            R.id.budget -> fragment = BudgetFragment.newInstance()
+            R.id.accounts -> fragment = HomeFragment.newInstance()
+            R.id.profile -> fragment = ProfileFragment.newInstance()
+        }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment?:HomeFragment.newInstance()).commitNow()
+        return true
     }
 }

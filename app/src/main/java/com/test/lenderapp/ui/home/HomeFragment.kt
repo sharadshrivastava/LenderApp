@@ -19,7 +19,6 @@ import com.test.lenderapp.data.Resource
 import com.test.lenderapp.data.model.AccountsItem
 import com.test.lenderapp.databinding.HomeFragmentBinding
 import com.test.lenderapp.ui.components.CirclePagerIndicatorDecoration
-import com.test.lenderapp.util.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
 
