@@ -1,4 +1,4 @@
-package com.test.lenderapp.ui.home
+package com.test.lenderapp.ui.components
 
 import android.graphics.Rect
 import android.view.View

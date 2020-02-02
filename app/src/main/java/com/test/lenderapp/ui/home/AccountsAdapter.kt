@@ -43,8 +43,13 @@ class AccountsAdapter(private var accountsList: MutableList<AccountsItem?>?) :
 //                    else transaction?.description
 //
 //            binding.balance.text = itemView.context.getString(R.string.currency, transaction?.amount.toString())
-
-            binding.tv.text = account?.name
+            var drawable = 0
+            when (account?.name) {
+                "ANZ" -> drawable = R.drawable.card_bg_blue
+                "CommBank" -> drawable = R.drawable.card_bg_green
+                "Westpac"  -> drawable = R.drawable.card_bg_red
+            }
+            binding.cardLayout.setBackgroundResource(drawable)
         }
     }
 

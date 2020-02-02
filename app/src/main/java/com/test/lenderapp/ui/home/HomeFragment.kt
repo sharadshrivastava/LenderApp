@@ -1,11 +1,13 @@
 package com.test.lenderapp.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +18,10 @@ import com.test.lenderapp.R
 import com.test.lenderapp.data.Resource
 import com.test.lenderapp.data.model.AccountsItem
 import com.test.lenderapp.databinding.HomeFragmentBinding
+import com.test.lenderapp.ui.components.HorizontalSpaceItemDecoration
 import com.test.lenderapp.util.Utils
+import kotlinx.android.synthetic.main.main_activity.*
+
 
 class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -27,18 +32,40 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
+        setHasOptionsMenu(true);
         vm = ViewModelProvider(this).get(HomeViewModel::class.java)
         observeAccountLiveData()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.swipeRefresh.setOnRefreshListener(this)
+        setupMonths()
         setupAccountsList(null)
+    }
+
+    private fun setupMonths() {
+        activity?.toolbar?.findViewById<Spinner>(R.id.spinner)?.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    //months selection actions will go here.
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
     }
 
     private fun setupAccountsList(list: MutableList<AccountsItem?>?) {
@@ -54,7 +81,11 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         listView?.setHasFixedSize(true)
         listView?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         listView?.adapter = adapter
-        listView?.addItemDecoration(HorizontalSpaceItemDecoration(Utils.pxFromDp(context, 1f).toInt()))
+        listView?.addItemDecoration(
+            HorizontalSpaceItemDecoration(
+                Utils.pxFromDp(context, 1f).toInt()
+            )
+        )
     }
 
     private fun observeAccountLiveData() {
@@ -67,7 +98,8 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 refreshAccounts(resource.data?.accounts)
             } else {
                 binding.isLoading = false
-                Snackbar.make(binding.root, resource?.message ?: "Error", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, resource?.message ?: "Error", Snackbar.LENGTH_LONG)
+                    .show()
             }
         })
     }

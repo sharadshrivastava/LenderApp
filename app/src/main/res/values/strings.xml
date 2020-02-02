@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">LenderApp</string>
+    <string name="app_name">Expenses</string>
     <string name="loading">Loading&#8230;</string>
     <string name="network_error">Network Error</string>
     <string name="response_error">Bad Server Response</string>
+    
+    <string-array name="months">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>March</item>
+        <item>April</item>
+    </string-array>
 </resources>
