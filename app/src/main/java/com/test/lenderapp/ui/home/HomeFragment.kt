@@ -16,13 +16,13 @@ import com.test.lenderapp.R
 import com.test.lenderapp.data.Resource
 import com.test.lenderapp.data.model.AccountsItem
 import com.test.lenderapp.databinding.HomeFragmentBinding
+import com.test.lenderapp.util.Utils
 
 class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var vm: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
-    //private var adapter: TransactionsAdapter? = null
-
+    private var adapter: AccountsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,36 +37,34 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.swiperefresh.setOnRefreshListener(this)
-        setupTransactionsList(null)
+        binding.swipeRefresh.setOnRefreshListener(this)
+        setupAccountsList(null)
     }
 
-    private fun setupTransactionsList(list: MutableList<AccountsItem?>?) {
-//        if (adapter == null) {
-//            binding.isLoading = true
-//            adapter = TransactionsAdapter(listener, list)
-//        }
-//        setupListView(binding.transactionsList, adapter)
-//        binding.vm = vm
+    private fun setupAccountsList(list: MutableList<AccountsItem?>?) {
+        if (adapter == null) {
+            binding.isLoading = true
+            adapter = AccountsAdapter(list)
+        }
+        setupListView(binding.accountsList, adapter)
+        binding.vm = vm
     }
 
-    private fun setupListView(listView: RecyclerView?/*, adapter: TransactionsAdapter?*/) {
+    private fun setupListView(listView: RecyclerView?, adapter: AccountsAdapter?) {
         listView?.setHasFixedSize(true)
-        val mLayoutManager = LinearLayoutManager(context)
-        listView?.layoutManager = mLayoutManager
-        //listView?.adapter = adapter
-        //listView?.addItemDecoration(VerticalSpaceItemDecoration(Utils.pxFromDp(context, 1f).toInt()))
+        listView?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        listView?.adapter = adapter
+        listView?.addItemDecoration(HorizontalSpaceItemDecoration(Utils.pxFromDp(context, 1f).toInt()))
     }
 
     private fun observeAccountLiveData() {
         vm.getAccountDetails().observe(this, Observer { resource ->
             if (resource?.status == Resource.Status.SUCCESS) {
                 binding.isLoading = false
-                binding.swiperefresh.isRefreshing = false
+                binding.swipeRefresh.isRefreshing = false
 
-                //vm.setData(resource.data)
-                //setAtmInfo(vm.getAtms())
-                //refreshTransactions(vm.getAllTransactions())
+                vm.setData(resource.data)
+                refreshAccounts(resource.data?.accounts)
             } else {
                 binding.isLoading = false
                 Snackbar.make(binding.root, resource?.message ?: "Error", Snackbar.LENGTH_LONG).show()
@@ -78,12 +76,11 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         observeAccountLiveData()
     }
 
-    /*private fun refreshTransactions(list: List<BaseTransactionItem?>?) {
+    private fun refreshAccounts(list: List<AccountsItem?>?) {
         adapter?.setData(list)
-    }*/
+    }
 
     companion object {
         fun newInstance() = HomeFragment()
     }
-
 }
