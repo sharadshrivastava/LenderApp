@@ -18,7 +18,7 @@ import com.test.lenderapp.R
 import com.test.lenderapp.data.Resource
 import com.test.lenderapp.data.model.AccountsItem
 import com.test.lenderapp.databinding.HomeFragmentBinding
-import com.test.lenderapp.ui.components.HorizontalSpaceItemDecoration
+import com.test.lenderapp.ui.components.CirclePagerIndicatorDecoration
 import com.test.lenderapp.util.Utils
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -81,11 +81,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         listView?.setHasFixedSize(true)
         listView?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         listView?.adapter = adapter
-        listView?.addItemDecoration(
-            HorizontalSpaceItemDecoration(
-                Utils.pxFromDp(context, 1f).toInt()
-            )
-        )
+        listView?.addItemDecoration(CirclePagerIndicatorDecoration(listView.context))
     }
 
     private fun observeAccountLiveData() {

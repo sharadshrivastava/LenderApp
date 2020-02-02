@@ -29,6 +29,7 @@
                 android:id="@+id/accounts_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="240dp"
                 android:focusableInTouchMode="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
