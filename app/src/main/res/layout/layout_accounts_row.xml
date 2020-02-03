@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="@dimen/card_radius" >
+            app:cardElevation="@dimen/card_elevation" >
 
             <LinearLayout
                 android:id="@+id/card_layout"

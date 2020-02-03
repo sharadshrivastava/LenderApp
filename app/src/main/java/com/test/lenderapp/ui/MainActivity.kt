@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.name
     private val allPermission = 1
-    lateinit var navigationView:BottomNavigationView
+    //lateinit var navigationView:BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,14 +59,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigationView(){
-        navigationView = findViewById(R.id.bottom_navigation)
-        navigationView.setOnNavigationItemSelectedListener{
+        bottomNavigation.setOnNavigationItemSelectedListener{
             handleNavigationItems(it.itemId)
         }
-        navigationView.setOnNavigationItemReselectedListener {
+        bottomNavigation.setOnNavigationItemReselectedListener {
             //This override is required to avoid recreation of fragment on double click.
         }
-        navigationView.selectedItemId = R.id.accounts
+        bottomNavigation.selectedItemId = R.id.accounts
     }
 
     private fun handleNavigationItems(id:Int):Boolean{

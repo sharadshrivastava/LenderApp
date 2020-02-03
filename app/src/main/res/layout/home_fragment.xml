@@ -29,11 +29,60 @@
                 android:id="@+id/accounts_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="240dp"
+                android:minHeight="@dimen/list_height"
                 android:focusableInTouchMode="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="@dimen/list_margin"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/accounts_list">
+
+                <include
+                    android:id="@+id/houseHold"
+                    android:layout_width="@dimen/expense_card_width"
+                    android:layout_height="@dimen/expense_card_height"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginStart="@dimen/std_margin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    layout="@layout/layout_circular_chart"/>
+
+                <include
+                    android:id="@+id/grocery"
+                    android:layout_width="@dimen/expense_card_width"
+                    android:layout_height="@dimen/expense_card_height"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginEnd="@dimen/std_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    layout="@layout/layout_circular_chart"/>
+
+                <include
+                    android:id="@+id/transport"
+                    android:layout_width="@dimen/expense_card_width"
+                    android:layout_height="@dimen/expense_card_height"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginBottom="@dimen/std_margin"
+                    app:layout_constraintStart_toStartOf="@id/houseHold"
+                    app:layout_constraintTop_toBottomOf="@id/houseHold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    layout="@layout/layout_circular_chart"/>
+
+                <include
+                    android:id="@+id/food"
+                    android:layout_width="@dimen/expense_card_width"
+                    android:layout_height="@dimen/expense_card_height"
+                    android:layout_marginTop="@dimen/std_margin"
+                    android:layout_marginBottom="@dimen/std_margin"
+                    app:layout_constraintStart_toStartOf="@id/grocery"
+                    app:layout_constraintTop_toBottomOf="@id/grocery"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    layout="@layout/layout_circular_chart"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.test.lenderapp.ui.components.VerticalSwipeRefresh>
