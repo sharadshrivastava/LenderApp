@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.test.lenderapp.R
@@ -84,6 +86,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         listView?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         listView?.adapter = adapter
         listView?.addItemDecoration(CirclePagerIndicatorDecoration(listView.context))
+        PagerSnapHelper().attachToRecyclerView(listView)
     }
 
     private fun observeAccountLiveData() {
