@@ -17,8 +17,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.test.lenderapp.R
 import com.test.lenderapp.data.Resource
 import com.test.lenderapp.data.model.AccountsItem
+import com.test.lenderapp.data.model.MonthsItem
 import com.test.lenderapp.databinding.HomeFragmentBinding
 import com.test.lenderapp.ui.components.CirclePagerIndicatorDecoration
+import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.layout_circular_chart.view.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 
@@ -91,6 +94,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
                 vm.setData(resource.data)
                 refreshAccounts(resource.data?.accounts)
+                setupExpenseCharts(resource.data?.accounts?.get(0)?.months?.get(0))
             } else {
                 binding.isLoading = false
                 Snackbar.make(binding.root, resource?.message ?: "Error", Snackbar.LENGTH_LONG)
@@ -105,6 +109,26 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun refreshAccounts(list: List<AccountsItem?>?) {
         adapter?.setData(list)
+    }
+
+    private fun setupExpenseCharts(month:MonthsItem?){
+       // houseHold.chartName.chartIcon =
+        houseHold.chartName.text = "Household"
+        houseHold.amount.text = month?.household.toString()
+        houseHold.percent.text = "65%"
+
+        //grocery.chartName.chartIcon =
+        grocery.chartName.text = "Grocery"
+        grocery.amount.text = month?.groceries.toString()
+        grocery.percent.text = "45%"
+
+        transport.chartName.text = "Transport"
+        transport.amount.text = month?.transport.toString()
+        transport.percent.text = "25%"
+
+        food.chartName.text = "Food"
+        food.amount.text = month?.food.toString()
+        food.percent.text = "30%"
     }
 
     companion object {
