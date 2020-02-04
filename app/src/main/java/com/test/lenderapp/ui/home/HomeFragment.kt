@@ -123,7 +123,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         houseHold.chartIcon.setImageResource(R.drawable.home)
         houseHold.chartName.text = getString(R.string.household)
         houseHold.amount.text = getString(R.string.expense,household?.toString())
-        val value:Int = vm.getExpensePercent(household?:0.0, total?:0.0).toInt()
+        val value = vm.getExpensePercent(household?:0.0, total?:0.0).toInt()
         houseHold.percent.text = getString(R.string.percentValue, value,getString(R.string.percent) )
         houseHold.circularChart.progress = value
     }
@@ -132,7 +132,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         grocery.chartIcon.setImageResource(R.drawable.basket)
         grocery.chartName.text = getString(R.string.grocery)
         grocery.amount.text = getString(R.string.expense, groceries.toString())
-        val value:Int = vm.getExpensePercent(groceries?:0.0, total?:0.0).toInt()
+        val value = vm.getExpensePercent(groceries?:0.0, total?:0.0).toInt()
         grocery.percent.text = getString(R.string.percentValue, value ,getString(R.string.percent))
         grocery.circularChart.progress = value
     }
@@ -141,7 +141,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         transport.chartIcon.setImageResource(R.drawable.bus)
         transport.chartName.text = getString(R.string.transport)
         transport.amount.text = getString(R.string.expense, transports.toString())
-        val value:Int = vm.getExpensePercent(transports?:0.0, total?:0.0).toInt()
+        val value = vm.getExpensePercent(transports?:0.0, total?:0.0).toInt()
         transport.percent.text = getString(R.string.percentValue, value,getString(R.string.percent))
         transport.circularChart.progress = value
     }
@@ -150,7 +150,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         food.chartIcon.setImageResource(R.drawable.cherry)
         food.chartName.text = getString(R.string.food)
         food.amount.text = getString(R.string.expense, foods.toString())
-        val value:Int = vm.getExpensePercent(foods?:0.0, total?:0.0).toInt()
+        val value = vm.getExpensePercent(foods?:0.0, total?:0.0).toInt()
         food.percent.text = getString(R.string.percentValue,value,getString(R.string.percent))
         food.circularChart.progress = value
     }
