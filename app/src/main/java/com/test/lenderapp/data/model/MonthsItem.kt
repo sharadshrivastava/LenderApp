@@ -5,20 +5,20 @@ import com.squareup.moshi.Json
 data class MonthsItem(
 
 	@Json(name="total")
-	val total: Int? = null,
+	val total: Double? = null,
 
 	@Json(name="name")
 	val name: String? = null,
 
 	@Json(name="household")
-	val household: Int? = null,
+	val household: Double? = null,
 
 	@Json(name="transport")
-	val transport: Int? = null,
+	val transport: Double? = null,
 
 	@Json(name="groceries")
-	val groceries: Int? = null,
+	val groceries: Double? = null,
 
 	@Json(name="food")
-	val food: Int? = null
+	val food: Double? = null
 )

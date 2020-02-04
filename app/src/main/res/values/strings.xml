@@ -5,6 +5,13 @@
     <string name="response_error">Bad Server Response</string>
     <string name="budget">Budget</string>
     <string name="profile">Profile</string>
+    <string name="expense">$%1$s</string>
+    <string name="percent">%</string>
+    <string name="percentValue">%1$d%2$s</string>
+    <string name="household">Household</string>
+    <string name="grocery">Grocery</string>
+    <string name="transport">Transport</string>
+    <string name="food">Food</string>
 
     <string-array name="months">
         <item>Jan</item>

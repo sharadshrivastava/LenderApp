@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.test.lenderapp.R
@@ -95,7 +94,6 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 binding.isLoading = false
                 binding.swipeRefresh.isRefreshing = false
 
-                vm.setData(resource.data)
                 refreshAccounts(resource.data?.accounts)
                 setupExpenseCharts(resource.data?.accounts?.get(0)?.months?.get(0))
             } else {
@@ -115,23 +113,46 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun setupExpenseCharts(month:MonthsItem?){
-       // houseHold.chartName.chartIcon =
-        houseHold.chartName.text = "Household"
-        houseHold.amount.text = month?.household.toString()
-        houseHold.percent.text = "65%"
+        setupHousehold(month?.household, month?.total)
+        setupGrocery(month?.groceries, month?.total)
+        setupTransport(month?.transport, month?.total)
+        setupFood(month?.food, month?.total)
+    }
 
-        //grocery.chartName.chartIcon =
-        grocery.chartName.text = "Grocery"
-        grocery.amount.text = month?.groceries.toString()
-        grocery.percent.text = "45%"
+    private fun setupHousehold(household:Double?, total:Double?){
+        houseHold.chartIcon.setImageResource(R.drawable.home)
+        houseHold.chartName.text = getString(R.string.household)
+        houseHold.amount.text = getString(R.string.expense,household?.toString())
+        val value:Int = vm.getExpensePercent(household?:0.0, total?:0.0).toInt()
+        houseHold.percent.text = getString(R.string.percentValue, value,getString(R.string.percent) )
+        houseHold.circularChart.progress = value
+    }
 
-        transport.chartName.text = "Transport"
-        transport.amount.text = month?.transport.toString()
-        transport.percent.text = "25%"
+    private fun setupGrocery(groceries:Double?, total:Double?){
+        grocery.chartIcon.setImageResource(R.drawable.basket)
+        grocery.chartName.text = getString(R.string.grocery)
+        grocery.amount.text = getString(R.string.expense, groceries.toString())
+        val value:Int = vm.getExpensePercent(groceries?:0.0, total?:0.0).toInt()
+        grocery.percent.text = getString(R.string.percentValue, value ,getString(R.string.percent))
+        grocery.circularChart.progress = value
+    }
 
-        food.chartName.text = "Food"
-        food.amount.text = month?.food.toString()
-        food.percent.text = "30%"
+    private fun setupTransport(transports:Double?, total:Double?){
+        transport.chartIcon.setImageResource(R.drawable.bus)
+        transport.chartName.text = getString(R.string.transport)
+        transport.amount.text = getString(R.string.expense, transports.toString())
+        val value:Int = vm.getExpensePercent(transports?:0.0, total?:0.0).toInt()
+        transport.percent.text = getString(R.string.percentValue, value,getString(R.string.percent))
+        transport.circularChart.progress = value
+    }
+
+    private fun setupFood(foods:Double?, total:Double?){
+        food.chartIcon.setImageResource(R.drawable.cherry)
+        food.chartName.text = getString(R.string.food)
+        food.amount.text = getString(R.string.expense, foods.toString())
+        val value:Int = vm.getExpensePercent(foods?:0.0, total?:0.0).toInt()
+        food.percent.text = getString(R.string.percentValue,value,getString(R.string.percent))
+        food.circularChart.progress = value
     }
 
     companion object {
