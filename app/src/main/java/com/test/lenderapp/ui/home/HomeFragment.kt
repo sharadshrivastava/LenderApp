@@ -34,7 +34,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var adapter: AccountsAdapter? = null
 
     private var posLiveData =  MutableLiveData<Int>();
-    private var currPos:Int = 0
+    private var currAcctPos:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +65,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?, monthPos: Int, id: Long) {
-                    setupExpenseCharts(currPos, monthPos)
+                    setupExpenseCharts(currAcctPos, monthPos)
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
@@ -107,8 +107,8 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun observePosLiveData(){
         posLiveData.observe(this, Observer { pos ->
-            if(currPos!=pos) {
-                currPos = pos
+            if(currAcctPos!=pos) {
+                currAcctPos = pos
                 setupExpenseCharts(pos, 0)
             }
         })
