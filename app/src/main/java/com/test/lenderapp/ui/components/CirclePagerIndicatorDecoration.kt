@@ -7,12 +7,15 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.lenderapp.R
 
-//This class is used for page indicator.
-class CirclePagerIndicatorDecoration(private var context: Context) : RecyclerView.ItemDecoration() {
+//This class is used for page indicator. Downloaded from Internet.
+class CirclePagerIndicatorDecoration(private val context: Context,
+                                     private val liveData: MutableLiveData<Int>) :
+    RecyclerView.ItemDecoration() {
 
     private val colorActive = context.resources.getColor(R.color.colorPrimary, context.theme)
     private val colorInactive = context.resources.getColor(R.color.colorGray, context.theme)
@@ -72,6 +75,8 @@ class CirclePagerIndicatorDecoration(private var context: Context) : RecyclerVie
         if (activePosition == RecyclerView.NO_POSITION) {
             return
         }
+
+        liveData.value = activePosition
 
         // find offset of active page (if the user is scrolling)
         val activeChild = layoutManager.findViewByPosition(activePosition)

@@ -16,8 +16,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     @Inject
     lateinit var accountDetailsRepository: AccountDetailsRepository
 
+    var response: ApiResponse? = null
+
     init {
         LenderApp.get().component.inject(this)
+    }
+
+    fun setData(responseData: ApiResponse?) {
+        response = responseData
     }
 
     fun getAccountDetails(): LiveData<Resource<ApiResponse>> = accountDetailsRepository.getAccountDetails()

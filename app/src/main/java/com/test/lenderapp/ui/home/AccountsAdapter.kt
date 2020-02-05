@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.layout_vertical_bars.view.*
 import kotlinx.android.synthetic.main.layout_vertical_chart.view.*
 
 
-class AccountsAdapter(private var accountsList: MutableList<AccountsItem?>?) :
+class AccountsAdapter(private var homeFragment: HomeFragment,
+                      private var accountsList: MutableList<AccountsItem?>?) :
     RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     private lateinit var context: Context
@@ -45,6 +46,11 @@ class AccountsAdapter(private var accountsList: MutableList<AccountsItem?>?) :
         fun bindData(account: AccountsItem?) {
             manageAccountsRow(account)
             manageVerticalCharts(account)
+            var pos = adapterPosition
+
+            var pos2 = layoutPosition
+            var pos3 = position
+            var pos4 = oldPosition
         }
 
         private fun manageAccountsRow(account: AccountsItem?) {

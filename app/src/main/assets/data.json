@@ -42,11 +42,11 @@
       "months": [
         {
           "name": "Jan",
-          "total": 1307,
+          "total": 1507,
           "household": 654,
           "groceries": 362,
           "transport": 160,
-          "food": 131
+          "food": 231
         },
         {
           "name": "Feb",
