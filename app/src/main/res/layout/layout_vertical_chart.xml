@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/std_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/totalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_gravity="start"
+        android:textSize="@dimen/text_size_small" />
+
+    <View
+        android:id="@+id/verticalChart"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_gravity="start"
+        android:background="@drawable/rectangle"/>
+
+    <TextView
+        android:id="@+id/month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_gravity="start"
+        android:textSize="@dimen/text_size_small" />
+</LinearLayout>

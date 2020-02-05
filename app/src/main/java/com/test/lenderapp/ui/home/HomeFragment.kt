@@ -123,36 +123,36 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         houseHold.chartIcon.setImageResource(R.drawable.home)
         houseHold.chartName.text = getString(R.string.household)
         houseHold.amount.text = getString(R.string.expense,household?.toString())
-        val value = vm.getExpensePercent(household?:0.0, total?:0.0).toInt()
-        houseHold.percent.text = getString(R.string.percentValue, value,getString(R.string.percent) )
-        houseHold.circularChart.progress = value
+        val expenses = vm.getExpensePercent(household?:0.0, total?:0.0).toInt()
+        houseHold.percent.text = getString(R.string.percentValue, expenses,getString(R.string.percent) )
+        houseHold.circularChart.progress = expenses
     }
 
     private fun setupGrocery(groceries:Double?, total:Double?){
         grocery.chartIcon.setImageResource(R.drawable.basket)
         grocery.chartName.text = getString(R.string.grocery)
         grocery.amount.text = getString(R.string.expense, groceries.toString())
-        val value = vm.getExpensePercent(groceries?:0.0, total?:0.0).toInt()
-        grocery.percent.text = getString(R.string.percentValue, value ,getString(R.string.percent))
-        grocery.circularChart.progress = value
+        val expenses = vm.getExpensePercent(groceries?:0.0, total?:0.0).toInt()
+        grocery.percent.text = getString(R.string.percentValue, expenses ,getString(R.string.percent))
+        grocery.circularChart.progress = expenses
     }
 
     private fun setupTransport(transports:Double?, total:Double?){
         transport.chartIcon.setImageResource(R.drawable.bus)
         transport.chartName.text = getString(R.string.transport)
         transport.amount.text = getString(R.string.expense, transports.toString())
-        val value = vm.getExpensePercent(transports?:0.0, total?:0.0).toInt()
-        transport.percent.text = getString(R.string.percentValue, value,getString(R.string.percent))
-        transport.circularChart.progress = value
+        val expenses = vm.getExpensePercent(transports?:0.0, total?:0.0).toInt()
+        transport.percent.text = getString(R.string.percentValue, expenses,getString(R.string.percent))
+        transport.circularChart.progress = expenses
     }
 
     private fun setupFood(foods:Double?, total:Double?){
         food.chartIcon.setImageResource(R.drawable.cherry)
         food.chartName.text = getString(R.string.food)
         food.amount.text = getString(R.string.expense, foods.toString())
-        val value = vm.getExpensePercent(foods?:0.0, total?:0.0).toInt()
-        food.percent.text = getString(R.string.percentValue,value,getString(R.string.percent))
-        food.circularChart.progress = value
+        val expenses = vm.getExpensePercent(foods?:0.0, total?:0.0).toInt()
+        food.percent.text = getString(R.string.percentValue,expenses,getString(R.string.percent))
+        food.circularChart.progress = expenses
     }
 
     companion object {
