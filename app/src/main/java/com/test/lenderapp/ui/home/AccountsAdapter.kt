@@ -17,14 +17,16 @@ import kotlinx.android.synthetic.main.layout_vertical_bars.view.*
 import kotlinx.android.synthetic.main.layout_vertical_chart.view.*
 
 
-class AccountsAdapter(private var homeFragment: HomeFragment,
-                      private var accountsList: MutableList<AccountsItem?>?) :
+class AccountsAdapter(
+    private var accountsList: MutableList<AccountsItem?>?
+) :
     RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     private lateinit var context: Context
+    private lateinit var binding: LayoutAccountsRowBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountsViewHolder {
-        val binding = DataBindingUtil.inflate<LayoutAccountsRowBinding>(
+        binding = DataBindingUtil.inflate<LayoutAccountsRowBinding>(
             LayoutInflater.from(parent.context),
             R.layout.layout_accounts_row, parent, false
         )
@@ -46,11 +48,6 @@ class AccountsAdapter(private var homeFragment: HomeFragment,
         fun bindData(account: AccountsItem?) {
             manageAccountsRow(account)
             manageVerticalCharts(account)
-            var pos = adapterPosition
-
-            var pos2 = layoutPosition
-            var pos3 = position
-            var pos4 = oldPosition
         }
 
         private fun manageAccountsRow(account: AccountsItem?) {
@@ -64,10 +61,22 @@ class AccountsAdapter(private var homeFragment: HomeFragment,
         }
 
         private fun manageVerticalCharts(account: AccountsItem?) {
-            setChartValues(binding.verticalBarsLayout.firstMonthChart, account?.months?.get(0))
-            setChartValues(binding.verticalBarsLayout.secondMonthChart, account?.months?.get(1))
-            setChartValues(binding.verticalBarsLayout.thirdMonthChart, account?.months?.get(2))
-            setChartValues(binding.verticalBarsLayout.fourthMonthChart, account?.months?.get(3))
+            setChartValues(
+                binding.verticalBarsLayout.firstMonthChart,
+                account?.months?.get(Months.Jan.pos)
+            )
+            setChartValues(
+                binding.verticalBarsLayout.secondMonthChart,
+                account?.months?.get(Months.Feb.pos)
+            )
+            setChartValues(
+                binding.verticalBarsLayout.thirdMonthChart,
+                account?.months?.get(Months.March.pos)
+            )
+            setChartValues(
+                binding.verticalBarsLayout.fourthMonthChart,
+                account?.months?.get(Months.April.pos)
+            )
         }
 
         private fun setChartValues(layout: View, monthItem: MonthsItem?) {
@@ -98,5 +107,12 @@ class AccountsAdapter(private var homeFragment: HomeFragment,
             LenderApp.get().resources.getDimension(R.dimen.bar_width).toInt(),
             Utils.DpFromPx(context, height).toInt()
         )
+    }
+
+    enum class Months(val pos: Int) {
+        Jan(0),
+        Feb(1),
+        March(2),
+        April(3)
     }
 }

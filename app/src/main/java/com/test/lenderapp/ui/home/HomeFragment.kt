@@ -56,8 +56,17 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.swipeRefresh.setOnRefreshListener(this)
-        setupMonths()
         setupAccountsList(null)
+        setupMonths()
+    }
+
+    private fun setupAccountsList(list: MutableList<AccountsItem?>?) {
+        if (adapter == null) {
+            binding.isLoading = true
+            adapter = AccountsAdapter(list)
+        }
+        setupListView(binding.accountsList, adapter)
+        binding.vm = vm
     }
 
     private fun setupMonths() {
@@ -69,15 +78,6 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-    }
-
-    private fun setupAccountsList(list: MutableList<AccountsItem?>?) {
-        if (adapter == null) {
-            binding.isLoading = true
-            adapter = AccountsAdapter(this, list)
-        }
-        setupListView(binding.accountsList, adapter)
-        binding.vm = vm
     }
 
     private fun setupListView(listView: RecyclerView?, adapter: AccountsAdapter?) {
