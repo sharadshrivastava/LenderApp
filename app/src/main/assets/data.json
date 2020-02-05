@@ -50,19 +50,19 @@
         },
         {
           "name": "Feb",
-          "total": 1763,
-          "household": 810,
-          "groceries": 462,
-          "transport": 260,
-          "food": 231
-        },
-        {
-          "name": "March",
           "total": 1186,
           "household": 554,
           "groceries": 262,
           "transport": 160,
           "food": 210
+        },
+        {
+          "name": "March",
+          "total": 1763,
+          "household": 810,
+          "groceries": 462,
+          "transport": 260,
+          "food": 231
         },
         {
           "name": "April",
@@ -87,6 +87,14 @@
         },
         {
           "name": "Feb",
+          "total": 1690,
+          "household": 700,
+          "groceries": 440,
+          "transport": 250,
+          "food": 300
+        },
+        {
+          "name": "March",
           "total": 1723,
           "household": 800,
           "groceries": 452,
@@ -94,20 +102,12 @@
           "food": 221
         },
         {
-          "name": "March",
+          "name": "April",
           "total": 1146,
           "household": 544,
           "groceries": 252,
           "transport": 150,
           "food": 200
-        },
-        {
-          "name": "April",
-          "total": 1690,
-          "household": 700,
-          "groceries": 440,
-          "transport": 250,
-          "food": 300
         }
       ]
     }
