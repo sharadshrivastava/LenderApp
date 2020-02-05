@@ -8,8 +8,8 @@
     android:orientation="horizontal">
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/one_dp"
         android:layout_weight="1"/>
 
     <include
@@ -20,8 +20,8 @@
         layout="@layout/layout_vertical_chart"/>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/one_dp"
         android:layout_weight="1"/>
 
     <include
@@ -32,8 +32,8 @@
         layout="@layout/layout_vertical_chart"/>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/one_dp"
         android:layout_weight="1"/>
 
     <include
@@ -44,8 +44,8 @@
         layout="@layout/layout_vertical_chart"/>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/one_dp"
         android:layout_weight="1"/>
 
     <include
@@ -56,8 +56,8 @@
         layout="@layout/layout_vertical_chart"/>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/one_dp"
         android:layout_weight="1"/>
 
 </LinearLayout>

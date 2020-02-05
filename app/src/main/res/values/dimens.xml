@@ -23,5 +23,8 @@
     <dimen name="expense_card_width">180dp</dimen>
     <dimen name="expense_card_height">170dp</dimen>
     <dimen name="pie_chart_width">120dp</dimen>
+    <dimen name="bar_width">36dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="zero_dp">0dp</dimen>
 
 </resources>

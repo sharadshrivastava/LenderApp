@@ -16,8 +16,8 @@
 
     <View
         android:id="@+id/verticalChart"
-        android:layout_width="36dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/bar_width"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:background="@drawable/rectangle"/>
 

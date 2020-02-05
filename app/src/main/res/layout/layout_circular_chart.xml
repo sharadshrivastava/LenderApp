@@ -55,7 +55,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/std_short_med_margin"
         android:background="@drawable/circle_bg"
-        android:progress="30"
         android:progressDrawable="@drawable/circle" />
 
 </androidx.cardview.widget.CardView>
