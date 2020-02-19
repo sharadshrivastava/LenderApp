@@ -94,8 +94,8 @@ class AccountsAdapter(
 
     fun setData(transactions: List<AccountsItem?>?) {
         if (accountsList != null) {
-            accountsList!!.clear()
-            accountsList!!.addAll(transactions!!.toList())
+            accountsList?.clear()
+            accountsList?.let {list->transactions?.let(list::addAll) }
         } else {
             accountsList = transactions?.toMutableList()
         }
