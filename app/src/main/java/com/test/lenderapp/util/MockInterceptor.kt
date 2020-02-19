@@ -11,7 +11,7 @@ class MockInterceptor:Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val path  = chain.request().url.toUri().path
-        var response:String = ""
+        var response = ""
         if(path == "/"+ACCT_DETAILS_PATH){
             response = getResponseData()
         }
