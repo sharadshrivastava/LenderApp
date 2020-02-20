@@ -22,8 +22,4 @@ class AccountDetailsRepository @Inject constructor() {
             return ResponseHandler.handleException(e)
         }
     }
-
-    private fun handleFailure(liveData: MutableLiveData<*>, msg: String) {
-        liveData.value = Resource.error<Any>(msg, null)
-    }
 }
