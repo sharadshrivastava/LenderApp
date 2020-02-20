@@ -38,7 +38,8 @@ abstract class BaseTest {
 
     fun setResponse(fileName: String) {
         val input = this.javaClass.classLoader?.getResourceAsStream(fileName)
-        mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(Buffer().readFrom(input)))
+        mockWebServer.enqueue(MockResponse().setResponseCode(200).
+            setBody(input?.bufferedReader().use {it!!.readText()}))
     }
 
     fun setErrorResponse() {

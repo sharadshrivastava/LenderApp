@@ -39,7 +39,7 @@ class AccountsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return if (accountsList == null) 0 else accountsList!!.size
+        return accountsList.orEmpty().size
     }
 
     inner class AccountsViewHolder(private var binding: LayoutAccountsRowBinding) :
