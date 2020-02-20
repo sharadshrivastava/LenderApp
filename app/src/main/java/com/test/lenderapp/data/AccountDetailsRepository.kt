@@ -1,6 +1,5 @@
 package com.test.lenderapp.data
 
-import androidx.lifecycle.MutableLiveData
 import com.test.lenderapp.data.model.ApiResponse
 
 import java.lang.Exception
