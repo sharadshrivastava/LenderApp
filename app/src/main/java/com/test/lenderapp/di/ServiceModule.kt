@@ -29,7 +29,7 @@ class ServiceModule {
     @Provides
     @Singleton
     fun getClient(): OkHttpClient {
-        var interceptor =  HttpLoggingInterceptor()
+        val interceptor =  HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder().addInterceptor(interceptor)
             .addInterceptor(MockInterceptor()) //This is for offline data testing.
